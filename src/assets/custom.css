@@ -1,0 +1,146 @@
+/* Dark mode colors. */
+:root {
+	--sl-color-accent-low: #131e4f;
+	--sl-color-accent: #3447ff;
+	--sl-color-accent-high: #b3c7ff;
+	--sl-color-white: #ffffff;
+	--sl-color-gray-1: #eceef2;
+	--sl-color-gray-2: #c0c2c7;
+	--sl-color-gray-3: #888b96;
+	--sl-color-gray-4: #545861;
+	--sl-color-gray-5: #353841;
+	--sl-color-gray-6: #24272f;
+	--sl-color-black: #17181c;
+	--sl-content-width: 100%;
+}
+/* Light mode colors. */
+:root[data-theme='light'] {
+	--sl-color-accent-low: #c7d6ff;
+	--sl-color-accent: #364bff;
+	--sl-color-accent-high: #182775;
+	--sl-color-white: #17181c;
+	--sl-color-gray-1: #24272f;
+	--sl-color-gray-2: #353841;
+	--sl-color-gray-3: #545861;
+	--sl-color-gray-4: #888b96;
+	--sl-color-gray-5: #c0c2c7;
+	--sl-color-gray-6: #eceef2;
+	--sl-color-gray-7: #f5f6f8;
+	--sl-color-black: #ffffff;
+}
+
+.sl-markdown-content :not(a, strong, em, del, span, input, code) + :not(a, strong, em, del, span, input, code, :where(.not-content *)) {
+	margin-top: 0;
+}
+
+form{
+	margin: 0 0 2em;
+	gap: 1em;
+	display: flex;
+	flex-direction: column;
+	background: var(--sl-color-gray-6);
+	padding: 1em;
+}
+
+
+
+.codeControls {
+	margin: 0 !important;
+	text-align: end;
+	button {
+		margin: 2em 1em 0;
+		font-size: 0.75em;
+		padding: 0.25em 0.75em;
+		}
+}
+
+pre {
+	padding-top: 1em !important;
+	margin-top: -7em !important;
+	background: var(--sl-color-black);
+	max-height: 60vh;
+	overflow: auto; 
+	}
+
+label[for="expandButtons"]:has(.expand:checked) ~ .sideNavButtons > .navButton:not(:last-child),
+label[for="expandButtons"]:has(.expand:checked) ~ .sideNavButtons > .contactLine:not(:last-child),
+label[for="expandButtons"]:has(.expand:checked) ~ .sideNavButtons > .contactLine:not(:last-child),
+label[for="expandButtons"]:has(.expand:checked) ~ .itemList > .grouped-item:not(:last-child){
+	display: none;
+}
+
+.contactLine {
+	display: flex;
+	gap: 1rem;
+	border-bottom: 1px solid var(--sl-color-white);
+	margin: 0;
+	padding: 0.5em 0;
+	label {
+		display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 0.5em;
+	}
+	
+}
+
+
+.navButton{
+	display: flex;
+	gap: 1rem;
+	border-bottom: 1px solid var(--sl-color-white);
+	margin: 0;
+	padding: 0.5em 0;
+
+	label {
+		display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 0.5em;
+	}
+}
+
+
+	.buttonLabel{
+	flex: 1 0 auto;
+	}
+	.buttonUrl{
+	flex: 1 0 auto;
+	}
+	.buttonOptions {
+	flex: 3;
+	display: flex;
+	gap: 0.25em 2em;
+	flex-wrap: wrap;
+	}
+
+.navfieldControls{
+	padding: 0.5em;
+	background: var(--sl-color-gray-5);
+	button{
+		margin: 0.25em 0.5em 0.25em 0;
+	}
+}
+
+.navButtons label {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+}
+input[type="checkbox"]{
+	zoom: 2;
+}
+input[type="text"],
+textarea,
+select {
+	padding: 0.25em 0.5em;
+}
+
+Label.expandList{
+	display: inline-flex;
+}
+.inlineFields{
+	display: flex;
+	gap: 1em;
+}

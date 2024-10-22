@@ -1,0 +1,21 @@
+---
+title: "facts"
+description: "facts Component"
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import RTB from '../../../components/facts/rtb.vue';
+import CSS from '../../../components/facts/css.vue';
+
+<Tabs>
+
+  <TabItem icon="document" label="rtb">
+    <RTB client:load />
+  </TabItem>
+  
+  <TabItem icon="seti:css" label="css">
+    <CSS client:load />
+  </TabItem>
+  
+</Tabs>
+

@@ -1,0 +1,134 @@
+<template>
+	<div>
+		<form @submit.prevent="updateCode">
+			<label>
+				Title:
+				<input type="text" v-model="title" placeholder="Title" style="width: 100%;" />
+			</label>
+			<label>
+				Description:
+				<textarea v-model="description" placeholder="Description" style="width: 100%; height: 10ch"></textarea>
+			</label>
+		</form>
+		<div class="codeControls">
+			<button @click="copyToClipboard">Copy</button>
+		</div>
+		<pre><code ref="codeBlock">{{ codeBlock }}</code></pre>
+	</div>
+</template>
+
+<script>
+//import { marked } from 'marked';
+
+const data = {
+	title: 'title',
+	description: 'description',
+	codeBlock: `<h2 id="time-line" class="mb-2">Project timeline</h2>
+<div class="row timeline mx-0 mb-2">
+<div class="col-md-9 goal shaded-bg">
+<p>Engagement start</p>
+</div>
+<div class="col-md-3 status">
+<p class="text-uppercase">Q3 2024</p>
+</div>
+<div class="col-md-9 goal">
+<p>Anticipated project notification submission to the Canada Energy Regulatory (CER)</p>
+</div>
+<div class="col-md-3 status">
+<p class="text-uppercase">Q4 2024</p>
+</div>
+<div class="col-md-9 goal shaded-bg">
+<p>Anticipated section 214 application filing with the CER</p>
+</div>
+<div class="col-md-3 status">
+<p class="text-uppercase">Q1 2025</p>
+</div>
+<div class="col-md-9 goal">
+<p>Early clearing work</p>
+</div>
+<div class="col-md-3 status">
+<p class="text-uppercase">Q4 2025</p>
+</div>
+<div class="col-md-9 goal shaded-bg">
+<p>Construction expected to begin</p>
+</div>
+<div class="col-md-3 status">
+<p class="text-uppercase">Q4 2026</p>
+</div>
+<div class="col-md-9 goal">
+<p>Anticipated project in-service</p>
+</div>
+<div class="col-md-3 status mb-n1">
+<p class="text-uppercase">Q2 2027</p>
+</div>
+</div>
+<p class="small">NOTE: Dates are subject to change.</p>`,
+};
+
+export default {
+	data() {
+		return {
+			title: data.title,
+			description: data.description,
+			codeBlock: data.codeBlock,
+		};
+	},
+	methods: {
+		updateCode() {
+
+			// Properly construct the codeBlock with reactive data properties
+			this.codeBlock = hero.codeBlock
+				.replace('{{title}}', this.title)
+				.replace('{{description}}', this.description)
+		},
+		selectAll() {
+			const codeElement = this.$refs.codeBlock;
+			const range = document.createRange();
+			range.selectNodeContents(codeElement);
+			const selection = window.getSelection();
+			selection.removeAllRanges();
+			selection.addRange(range);
+		},
+		copyToClipboard() {
+			this.selectAll();
+			document.execCommand('copy');
+			alert('Code copied to clipboard!');
+		},
+	},
+	watch: {
+		title() {
+			this.updateCode();
+		},
+		description() {
+			this.updateCode(); 
+		},
+	},
+	mounted() {
+		this.updateCode();
+	},
+};
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

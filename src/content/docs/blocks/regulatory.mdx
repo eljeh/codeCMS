@@ -1,0 +1,23 @@
+---
+title: "regulatory"
+description: "regulatory Component"
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import RTB from '../../../components/regulatory/rtb.vue';
+import CSS from '../../../components/regulatory/css.vue';
+
+
+<Tabs>
+
+  <TabItem icon="document" label="rtb">
+    <RTB client:load />
+  </TabItem>
+  
+  <TabItem icon="seti:css" label="css">
+    <CSS client:load />
+  </TabItem>
+
+  
+</Tabs>
+

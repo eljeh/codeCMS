@@ -1,0 +1,27 @@
+---
+title: "Hero"
+description: "Hero Component"
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import HTML from '../../../components/hero/html.vue';
+import CSS from '../../../components/hero/css.vue';
+import JS from '../../../components/hero/js.vue';
+
+
+<Tabs>
+
+  <TabItem icon="seti:html" label="html">
+    <HTML client:load />
+  </TabItem>
+  
+  <TabItem icon="seti:css" label="css">
+    <CSS client:load />
+  </TabItem>
+
+  <TabItem icon="seti:json" label="js">
+    <JS client:load />
+  </TabItem>
+  
+</Tabs>
+
