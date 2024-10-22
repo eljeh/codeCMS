@@ -16,7 +16,7 @@ export default defineConfig({
                     { label: 'Hero', slug: 'blocks/hero' },
                     { label: 'Contact', slug: 'blocks/contact' },
                     { label: 'Facts', slug: 'blocks/facts' },
-                    { label: 'FAQ', slug: 'blocks/faq' },
+                    //{ label: 'FAQ', slug: 'blocks/faq' },
                     { label: 'Regulatory', slug: 'blocks/regulatory' },
                     { label: 'Timeline', slug: 'blocks/timeline' },
                     //{ label: 'Card', slug: 'blocks/card' },
