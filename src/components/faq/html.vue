@@ -123,10 +123,10 @@ export default {
         .replace('{{faqs}}', faqsHtml);
 		},
 			// Add a new empty line type entry
-      addLink() {
+    addEntry() {
       this.faqs.push({ label: '', body: ''});
     },
-    removeLink() {
+    removeEntry() {
       this.faqs.pop();
     },
 		selectAll() {
