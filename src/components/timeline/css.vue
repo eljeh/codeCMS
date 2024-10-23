@@ -65,7 +65,7 @@ export default {
 		updateCode() {
 
 			// Properly construct the codeBlock with reactive data properties
-			this.codeBlock = hero.codeBlock
+			this.codeBlock = data.codeBlock
 				.replace('{{title}}', this.title)
 				.replace('{{description}}', this.description)
 		},

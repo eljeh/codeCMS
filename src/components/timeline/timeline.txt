@@ -5,10 +5,7 @@
 				Title:
 				<input type="text" v-model="title" placeholder="Title" style="width: 100%;" />
 			</label>
-			<label>
-				Footnote:
-				<input type="text" v-model="footnote" placeholder="footnote" style="width: 100%;" />
-			</label>
+
 
 			<div class="grouped-itemList contractInfo">
           <strong>Contact Info:</strong>
@@ -21,19 +18,19 @@
           <div class="itemList sideNavButtons">
 
 
-              <div class="grouped-item contactLine" v-for="(lineitem, index) in lineitems" :key="index">
+              <div class="grouped-item contactLine" v-for="(faq, index) in faqs" :key="index">
                 
                 <span>{{ index + 1 }}:</span>
 
                 <div class="inputLine">
 
                   <label>
-                    goal:
-                    <input type="text" placeholder="goal" style="width: 100%;" v-model="lineitem.goal"/>
+                    Label:
+                    <input type="text" placeholder="Label" style="width: 100%;" v-model="faq.label"/>
                   </label>
                   <label>
-                    status:
-                    <input type="text" placeholder="status" style="width: 100%;" v-model="lineitem.status"/>
+                    Body:
+                    <textarea v-model="faq.body" placeholder="Description" style="width: 100%; height: 10ch"></textarea>
                   </label>
 
                 </div>
@@ -46,6 +43,7 @@
           			<button @click.prevent="removeEntry">- Last Line</button>
         		</div>
       		</div>
+
 
 			<div class="codeControls">
 				<button @click="copyToClipboard">Copy</button>
@@ -62,54 +60,70 @@
 
 const data = {
 	title: 'Project timeline',
-	footnote: 'NOTE: Dates are subject to change.',
-	lineitems: [
-    { goal: 'goal 1', status: 'status 1' },
-    { goal: 'goal 2', status: 'status 2' },
-    { goal: 'goal 3', status: 'status 3' },
-    { goal: 'goal 4', status: 'status 4' },
+	faqs: [
+    { goal: 'Link 1', status: '#' },
+    { goal: 'Link 2', status: '#' },
+    { goal: 'Link 3', status: '#' },
+    { goal: 'Link 4', status: '#' },
   ],
-	codeBlock: `<h2 id="time-line" class="mb-2">{{title}}</h2>
-	<div class="row timeline mx-0 mb-2">
-		{{lineitems}}
-	</div>
-<p class="small">{{footnote}}</p>`,
+	codeBlock: `<h2 id="time-line" class="mb-2">Project timeline</h2>
+<div class="row timeline mx-0 mb-2">
+<div class="col-md-9 goal shaded-bg">
+<p>Engagement start</p>
+</div>
+<div class="col-md-3 status">
+<p class="text-uppercase">Q3 2024</p>
+</div>
+<div class="col-md-9 goal">
+<p>Anticipated project notification submission to the Canada Energy Regulatory (CER)</p>
+</div>
+<div class="col-md-3 status">
+<p class="text-uppercase">Q4 2024</p>
+</div>
+<div class="col-md-9 goal shaded-bg">
+<p>Anticipated section 214 application filing with the CER</p>
+</div>
+<div class="col-md-3 status">
+<p class="text-uppercase">Q1 2025</p>
+</div>
+<div class="col-md-9 goal">
+<p>Early clearing work</p>
+</div>
+<div class="col-md-3 status">
+<p class="text-uppercase">Q4 2025</p>
+</div>
+<div class="col-md-9 goal shaded-bg">
+<p>Construction expected to begin</p>
+</div>
+<div class="col-md-3 status">
+<p class="text-uppercase">Q4 2026</p>
+</div>
+<div class="col-md-9 goal">
+<p>Anticipated project in-service</p>
+</div>
+<div class="col-md-3 status mb-n1">
+<p class="text-uppercase">Q2 2027</p>
+</div>
+</div>
+<p class="small">NOTE: Dates are subject to change.</p>`,
 };
 
 export default {
 	data() {
 		return {
 			title: data.title,
-			lineitems: data.lineitems, 
-			footnote: data.footnote, 
+			description: data.description,
 			codeBlock: data.codeBlock,
 		};
 	},
 	methods: {
 		updateCode() {
-      const lineitemsHtml = this.lineitems
-					.map((lineitem, index) => `<div class="col-md-9 goal shaded-bg">
-			<p>${lineitem.goal}</p>
-		</div>
-		<div class="col-md-3 status">
-			<p class="text-uppercase">${lineitem.status}</p>
-		</div>`)
-					.join('\n        ');
-
 
 			// Properly construct the codeBlock with reactive data properties
-			this.codeBlock = data.codeBlock
+			this.codeBlock = hero.codeBlock
 				.replace('{{title}}', this.title)
-        .replace('{{lineitems}}', lineitemsHtml)
-        .replace('{{footnote}}', this.footnote);
+				.replace('{{description}}', this.description)
 		},
-		// Add a new empty line type entry
-		addEntry() {
-      this.lineitems.push({ goal: '', status: ''});
-    },
-    removeEntry() {
-      this.lineitems.pop();
-    },
 		selectAll() {
 			const codeElement = this.$refs.codeBlock;
 			const range = document.createRange();
@@ -128,15 +142,9 @@ export default {
 		title() {
 			this.updateCode();
 		},
-		footnote() {
-			this.updateCode();
+		description() {
+			this.updateCode(); 
 		},
-    lineitems: {
-				handler() {
-					this.updateCode();
-				},
-				deep: true,
-			},
 	},
 	mounted() {
 		this.updateCode();
@@ -144,26 +152,6 @@ export default {
 };
 </script>
 
-<style>
-	.contactLine label{
-		display: flex;
-	}
-	.inputLine{
-    flex: 1;
-    display: flex;
-    gap: 1em;
-    flex-direction: column;
-	}
-	.inputLine label{
-		flex: 1;
-    gap: 1em;
-		text-wrap: nowrap;
-	}
-	.inputLine>div{
-		gap: 1em;
-		text-wrap: nowrap;
-	}
-</style>
 
 
 

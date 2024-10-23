@@ -77,12 +77,12 @@
           			<button @click.prevent="removeEntry">- Last Line</button>
         		</div>
       		</div>
-
-
-		</form>
-		<div class="codeControls">
+					<div class="codeControls">
 			<button @click="copyToClipboard">Copy</button>
 		</div>
+
+		</form>
+
 		<pre><code ref="codeBlock">{{ codeBlock }}</code></pre>
 	</div>
 </template>

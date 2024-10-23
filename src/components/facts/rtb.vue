@@ -37,10 +37,11 @@
 
 			</div>
 
+			<div class="codeControls">
+				<button @click="copyToClipboard">Copy</button>
+			</div>
 		</form>
-		<div class="codeControls">
-			<button @click="copyToClipboard">Copy</button>
-		</div>
+
 		<pre><code ref="codeBlock">{{ codeBlock }}</code></pre>
 	</div>
 </template>
