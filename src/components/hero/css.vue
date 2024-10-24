@@ -22,8 +22,8 @@
 //import { marked } from 'marked';
 
 const hero = {
-  heroMobile : '/siteassets/investors/spinoff/tc-sb-spinpage-hero-mobile.jpg',
-  heroDesktop: 'siteassets/investors/spinoff/tc-sb-spinpage-hero.jpg',
+  heroMobile : 'sb-spinpage-hero-mobile.jpg',
+  heroDesktop: 'sb-spinpage-hero.jpg',
   codeBlock: `@charset "utf-8";
 /* CSS Document */
 /* Remove padding from HTML block
@@ -74,7 +74,7 @@ h1 {
 
  */
 a.blue-nav-item::before {
-  background-image: url(/siteassets/brand/graphic-elements/tce-white-arrows.svg);
+  background-image: url(tce-white-arrows.svg);
   background-position: center center;
   background-repeat: no-repeat;
   content: "";

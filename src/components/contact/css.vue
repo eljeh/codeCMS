@@ -14,7 +14,7 @@
   const data = {
     codeBlock: `<style>
 .contact-bg {
-background-image: url(/siteassets/brand/graphic-elements/tce-emblem-white.svg), linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
+background-image: url(tce-emblem-white.svg), linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 70%;

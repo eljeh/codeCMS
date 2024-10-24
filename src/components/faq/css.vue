@@ -24,7 +24,7 @@ const data = {
 	title: 'title',
 	description: 'description',
 	codeBlock: `#home {
- background: url(/siteassets/brand/graphic-elements/tce-background-black-grid-1920x1080.jpg) 50% 0 repeat fixed;
+ background: url(background-black-grid-1920x1080.jpg) 50% 0 repeat fixed;
    min-height: 1000px;
   margin: 0 auto;
   width: 100%;

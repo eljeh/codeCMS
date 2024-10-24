@@ -25,7 +25,7 @@ const data = {
 	description: 'description',
 	codeBlock: `<style>
 .facts-wrapper {
-  background-image: url(/siteassets/brand/graphic-elements/tce-background-topography-white-1.jpg);
+  background-image: url(background-topography-white-1.jpg);
   background-size: cover;
 }
 .facts-cards img {

@@ -49,24 +49,24 @@
 <script>
 
 const data = {
-	card1Title: 'Supports economic growth in Alberta',
+	card1Title: 'Supports economic growth',
 	card2Title: 'Improves safety and efficiency of energy transport', 
 	card3Title: 'Utilizes existing corridors to minimize environmental impact',
 	links: [
-		{ label: 'Download the fact sheet', url: '/siteassets/pdfs/natural-gas/mcleod-south/tce_mcleod_south_factsheet_oct2024.pdf', style: 'blue-cta-button', external: true },
+		{ label: 'Download the fact sheet', url: '/factsheet_oct2024.pdf', style: 'blue-cta-button', external: true },
 	],
 	codeBlock: `<h2 id="facts" class="text-center mb-3">Key Project Benefits</h2>
 <div class="row gap-lg-3 gap-2 gap-lg-2 gap-md-3 px-lg-4 justify-content-md-center mb-4 facts-cards">
 	<div class="col-md-4 facts-card-blue text-center">
-		<img src="/epimanage/CMS/Content/siteassets/brand/graphic-elements/tce-white-arrows-up.svg,,79910?epieditmode=false" alt="Up arrow">
+		<img src="/graphic-elements/tce-white-arrows-up.svg" alt="Up arrow">
 		<h5 class="text-light">{{card1Title}}</h5>
 	</div>
 	<div class="col-md-4 facts-card-black text-center">
-		<img src="/epimanage/CMS/Content/siteassets/brand/graphic-elements/tce-white-arrows-up.svg,,79910?epieditmode=false" alt="Up arrow">
+		<img src="/graphic-elements/tce-white-arrows-up.svg" alt="Up arrow">
 		<h5 class="text-light">{{card2Title}}</h5>
 	</div>
 	<div class="col-md-4 facts-card-blue text-center">
-		<img src="/epimanage/CMS/Content/siteassets/brand/graphic-elements/tce-white-arrows-up.svg,,79910?epieditmode=false" alt="Up arrow">
+		<img src="/graphic-elements/tce-white-arrows-up.svg" alt="Up arrow">
 		<h5 class="text-light">{{card3Title}}</h5>
 	</div>
 </div>

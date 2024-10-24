@@ -61,13 +61,13 @@ color: #191919 !important;
 text-wrap: pretty;
 }
 .dark-theme .telephone:before {
-   content: url(/Static/images/svg/Functional/icn_phone_charcoal50.svg) !important;
+   content: url(icn_phone_charcoal50.svg) !important;
 }
 .dark-theme .fax:before {
-content: url(/Static/images/svg/Functional/icn_fax_charcoal50.svg);
+content: url(icn_fax_charcoal50.svg);
 }
 .dark-theme .email:before {
-    content: url(/Static/images/svg/Functional/icn_email_charcoal50.svg) !important;
+    content: url(icn_email_charcoal50.svg) !important;
 }
 </style>`,
 };
