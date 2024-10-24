@@ -54,7 +54,6 @@ const data = {
 	card3Title: 'Utilizes existing corridors to minimize environmental impact',
 	links: [
 		{ label: 'Download the fact sheet', url: '/siteassets/pdfs/natural-gas/mcleod-south/tce_mcleod_south_factsheet_oct2024.pdf', style: 'blue-cta-button', external: true },
-		{ label: 'Learn more', url: '/projects/mcleod-south', style: 'blue-text-link', external: false },
 	],
 	codeBlock: `<h2 id="facts" class="text-center mb-3">Key Project Benefits</h2>
 <div class="row gap-lg-3 gap-2 gap-lg-2 gap-md-3 px-lg-4 justify-content-md-center mb-4 facts-cards">
