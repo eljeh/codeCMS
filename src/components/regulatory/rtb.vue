@@ -98,11 +98,11 @@
 const data = {
 	title: 'Canada Energy Regulator (CER)',
 	linetypes: [
-				{ style: 'textStyle', text: 'Head Office'},
-				{ style: 'textStyle', text: '50 - 1 St. SW<br>Calgary Alberta<br>T2P 5H1'},
-				{ style: 'phoneStyle', phonenumber: '1-866-372-1601', phonetype: 'telLocal'},
-				{ style: 'phoneStyle', phonenumber: '1-866-372-1601', phonetype: 'telTollFree'},
-				{ style: 'emailStyle', email: 'me@me.com', displayname: 'Me'},
+			{ style: 'textStyle', text: 'Corporate Headquarters' },
+			{ style: 'textStyle', text: '200 Bay Street<br>Toronto, Ontario<br>M5J 2J2' },
+			{ style: 'phoneStyle', phonenumber: '1-800-555-1234', phonetype: 'telLocal' },
+			{ style: 'phoneStyle', phonenumber: '1-888-999-8765', phonetype: 'telTollFree' },
+			{ style: 'emailStyle', email: 'info@example.com', displayname: 'Customer Support' },
 			],
 	codeBlock: `<div class="regulatory-info">
 <div class="ferc-table">

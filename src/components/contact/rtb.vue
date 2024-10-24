@@ -103,15 +103,15 @@
 
 <script>
 	const data = {
-		title: 'title',
-		description: 'Our commitment to the safety of our pipelines and facilities is unwavering. In case of an emergency, visit our <a href="/epimanage/CMS/Content/about/contact,,28812/?epieditmode=false" target="_blank" rel="noopener">Contact page</a> for our complete list of emergency numbers.',
+		title: 'Contact Information',
+		description: 'Safety is our top priority for all our pipelines and facilities. For emergency situations, please refer to our <a href="/emergency-contacts" target="_blank" rel="noopener">Emergency Contact page</a> for a comprehensive list of emergency numbers.',
 		linetypes: [
-				{ style: 'textStyle', text: 'Head Office'},
-				{ style: 'textStyle', text: '50 - 1 St. SW<br>Calgary Alberta<br>T2P 5H1'},
-				{ style: 'phoneStyle', phonenumber: '1-866-372-1601', phonetype: 'telLocal'},
-				{ style: 'phoneStyle', phonenumber: '1-866-372-1601', phonetype: 'telTollFree'},
-				{ style: 'emailStyle', email: 'me@me.com', displayname: 'Me'},
-			],
+			{ style: 'textStyle', text: 'Corporate Headquarters' },
+			{ style: 'textStyle', text: '200 Bay Street<br>Toronto, Ontario<br>M5J 2J2' },
+			{ style: 'phoneStyle', phonenumber: '1-800-555-1234', phonetype: 'telLocal' },
+			{ style: 'phoneStyle', phonenumber: '1-888-999-8765', phonetype: 'telTollFree' },
+			{ style: 'emailStyle', email: 'info@example.com', displayname: 'Customer Support' },
+		],
 		codeBlock: `<div class="ferc-table mb-2">
 			<div class="ferc-header">
 				<h5 class="white-heading">{{title}}</h5>

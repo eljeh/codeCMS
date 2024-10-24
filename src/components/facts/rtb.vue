@@ -49,24 +49,25 @@
 <script>
 
 const data = {
-	card1Title: 'Helps meet growing demand in Alberta',
-	card2Title: 'Enhances secure and reliable energy transportation', 
-	card3Title: 'Footprint minimizes land and environmental disturbances',
+	card1Title: 'Supports economic growth in Alberta',
+	card2Title: 'Improves safety and efficiency of energy transport', 
+	card3Title: 'Utilizes existing corridors to minimize environmental impact',
 	links: [
-    { label: 'View the fact sheet', url: '/siteassets/pdfs/natural-gas/mcleod-south/tce_mcleod_south_factsheet_sept2024.pdf', style: 'blue-black-cta', external: false },
-  ],
-	codeBlock: `<h2 id="facts" class="text-center mb-2">Fact &amp; Figures</h2>
-<div class="row gap-lg-2 gap-1 gap-lg-1 gap-md-2 px-lg-3 justify-content-md-center mb-3 facts-cards">
-	<div class="col-md-3 facts-card-black text-center">
-		<img src="/epimanage/CMS/Content/siteassets/brand/graphic-elements/tce-white-arrows-down.svg,,79909?epieditmode=false" alt="Down arrow">
+		{ label: 'Download the fact sheet', url: '/siteassets/pdfs/natural-gas/mcleod-south/tce_mcleod_south_factsheet_oct2024.pdf', style: 'blue-cta-button', external: true },
+		{ label: 'Learn more', url: '/projects/mcleod-south', style: 'blue-text-link', external: false },
+	],
+	codeBlock: `<h2 id="facts" class="text-center mb-3">Key Project Benefits</h2>
+<div class="row gap-lg-3 gap-2 gap-lg-2 gap-md-3 px-lg-4 justify-content-md-center mb-4 facts-cards">
+	<div class="col-md-4 facts-card-blue text-center">
+		<img src="/epimanage/CMS/Content/siteassets/brand/graphic-elements/tce-white-arrows-up.svg,,79910?epieditmode=false" alt="Up arrow">
 		<h5 class="text-light">{{card1Title}}</h5>
 	</div>
-	<div class="col-md-3 facts-card-blue text-center">
-		<img src="/epimanage/CMS/Content/siteassets/brand/graphic-elements/tce-white-arrows-down.svg,,79909?epieditmode=false" alt="Down arrow">
+	<div class="col-md-4 facts-card-black text-center">
+		<img src="/epimanage/CMS/Content/siteassets/brand/graphic-elements/tce-white-arrows-up.svg,,79910?epieditmode=false" alt="Up arrow">
 		<h5 class="text-light">{{card2Title}}</h5>
 	</div>
-	<div class="col-md-3 facts-card-black text-center">
-		<img src="/epimanage/CMS/Content/siteassets/brand/graphic-elements/tce-white-arrows-down.svg,,79909?epieditmode=false" alt="Down arrow">
+	<div class="col-md-4 facts-card-blue text-center">
+		<img src="/epimanage/CMS/Content/siteassets/brand/graphic-elements/tce-white-arrows-up.svg,,79910?epieditmode=false" alt="Up arrow">
 		<h5 class="text-light">{{card3Title}}</h5>
 	</div>
 </div>
@@ -88,8 +89,8 @@ export default {
 		updateCode() {
 
 			const linksHtml = this.links
-        .map((link) => `<a class="${link.style}" href="${link.url}"${link.external ? ' target="_blank"' : ''}>${link.label}</a>`)
-        .join('\n        ');
+			.map((link) => `<a class="${link.style}" href="${link.url}"${link.external ? ' target="_blank"' : ''}>${link.label}</a>`)
+			.join('\n        ');
 
 			this.codeBlock = data.codeBlock
 				.replace('{{card1Title}}', this.card1Title)
@@ -122,11 +123,11 @@ export default {
 			this.updateCode(); 
 		},
 		links: {
-      handler() {
-        this.updateCode();
-      },
-    deep: true,
-    },
+			handler() {
+				this.updateCode();
+			},
+			deep: true,
+		},
 	},
 	mounted() {
 		this.updateCode();
