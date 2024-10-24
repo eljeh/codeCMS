@@ -51,8 +51,6 @@
 				<button @click="copyToClipboard">Copy</button>
 			</div>
 		</form>
-
-
 		<pre><code ref="codeBlock">{{ codeBlock }}</code></pre>
 	</div>
 </template>
@@ -64,11 +62,37 @@ const data = {
 	title: 'Project timeline',
 	footnote: 'NOTE: Dates are subject to change.',
 	lineitems: [
-    { goal: 'goal 1', status: 'status 1' },
-    { goal: 'goal 2', status: 'status 2' },
-    { goal: 'goal 3', status: 'status 3' },
-    { goal: 'goal 4', status: 'status 4' },
-  ],
+  {
+    "goal": "Engagement start",
+    "status": "Q3 2024",
+    "shaded": true
+  },
+  {
+    "goal": "Anticipated project notification submission to the Canada Energy Regulatory (CER)",
+    "status": "Q4 2024",
+    "shaded": false
+  },
+  {
+    "goal": "Anticipated section 214 application filing with the CER",
+    "status": "Q1 2025",
+    "shaded": true
+  },
+  {
+    "goal": "Early clearing work",
+    "status": "Q4 2025",
+    "shaded": false
+  },
+  {
+    "goal": "Construction expected to begin",
+    "status": "Q4 2026",
+    "shaded": true
+  },
+  {
+    "goal": "Anticipated project in-service",
+    "status": "Q2 2027",
+    "shaded": false
+  }
+],
 	codeBlock: `<h2 id="time-line" class="mb-2">{{title}}</h2>
 	<div class="row timeline mx-0 mb-2">
 		{{lineitems}}
