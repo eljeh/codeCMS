@@ -22,10 +22,10 @@ export default defineConfig({
                     //{ label: 'Card', slug: 'blocks/card' },
                 ],
             },
-            {
-                label: 'Reference',
-                autogenerate: { directory: 'reference' },
-            },
+            //{
+            //    label: 'Reference',
+            //    autogenerate: { directory: 'reference' },
+            //},
         ],
         customCss: [
             './src/assets/custom.css',

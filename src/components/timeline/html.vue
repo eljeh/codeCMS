@@ -38,6 +38,11 @@
 
                 </div>
 
+                <div class="reorderButtons">
+                  <button @click.prevent="moveItemUp(index)" :disabled="index === 0">↑</button>
+                  <button @click.prevent="moveItemDown(index)" :disabled="index === lineitems.length - 1">↓</button>
+                </div>
+
               </div>
 						</div>
 
@@ -63,33 +68,33 @@ const data = {
 	footnote: 'NOTE: Dates are subject to change.',
 	lineitems: [
   {
-    "goal": "Engagement start",
-    "status": "Q3 2024",
+    "goal": "Project kickoff meeting",
+    "status": "Q3 2025",
     "shaded": true
   },
   {
-    "goal": "Anticipated project notification submission to the Canada Energy Regulatory (CER)",
-    "status": "Q4 2024",
-    "shaded": false
-  },
-  {
-    "goal": "Anticipated section 214 application filing with the CER",
-    "status": "Q1 2025",
-    "shaded": true
-  },
-  {
-    "goal": "Early clearing work",
+    "goal": "Expected submission of environmental impact assessment to the National Environmental Board (NEB)",
     "status": "Q4 2025",
     "shaded": false
   },
   {
-    "goal": "Construction expected to begin",
-    "status": "Q4 2026",
+    "goal": "Planned filing of Section 301 permit application with the NEB",
+    "status": "Q1 2026",
     "shaded": true
   },
   {
-    "goal": "Anticipated project in-service",
-    "status": "Q2 2027",
+    "goal": "Preliminary site preparation",
+    "status": "Q4 2026",
+    "shaded": false
+  },
+  {
+    "goal": "Anticipated commencement of main construction phase",
+    "status": "Q4 2027",
+    "shaded": true
+  },
+  {
+    "goal": "Projected operational launch date",
+    "status": "Q2 2028",
     "shaded": false
   }
 ],
@@ -147,6 +152,18 @@ export default {
 			document.execCommand('copy');
 			alert('Code copied to clipboard!');
 		},
+		moveItemUp(index) {
+      if (index > 0) {
+        const item = this.lineitems.splice(index, 1)[0];
+        this.lineitems.splice(index - 1, 0, item);
+      }
+    },
+    moveItemDown(index) {
+      if (index < this.lineitems.length - 1) {
+        const item = this.lineitems.splice(index, 1)[0];
+        this.lineitems.splice(index + 1, 0, item);
+      }
+    },
 	},
 	watch: {
 		title() {
@@ -187,27 +204,18 @@ export default {
 		gap: 1em;
 		text-wrap: nowrap;
 	}
+	.reorderButtons {
+		display: flex;
+		flex-direction: column;
+		margin-left: 10px;
+	}
+	.reorderButtons button {
+		padding: 2px 5px;
+		font-size: 12px;
+		margin: 2px 0;
+	}
+	.grouped-item {
+		display: flex;
+		align-items: center;
+	}
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

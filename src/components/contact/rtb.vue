@@ -75,8 +75,13 @@
 								</label>
 							</div>
 						</div>
-          			</div>
-        		</div>
+						<div class="reorderButtons">
+							<button @click.prevent="moveItemUp(index)" :disabled="index === 0">↑</button>
+							<button @click.prevent="moveItemDown(index)" :disabled="index === linetypes.length - 1">↓</button>
+						</div>
+					</div>
+				</div>
+
 
         		<!-- Buttons to Add/Remove Lines -->
         		<div class="navfieldControls">
@@ -169,6 +174,18 @@
 				document.execCommand('copy');
 				alert('Code copied to clipboard!');
 			},
+			moveItemUp(index) {
+			if (index > 0) {
+				const item = this.linetypes.splice(index, 1)[0];
+				this.linetypes.splice(index - 1, 0, item);
+			}
+		},
+		moveItemDown(index) {
+			if (index < this.linetypes.length - 1) {
+				const item = this.linetypes.splice(index, 1)[0];
+				this.linetypes.splice(index + 1, 0, item);
+			}
+		},
 		},
 
 		// Watch for changes to form inputs and update the codeBlock dynamically
@@ -230,6 +247,20 @@
 	.textStyle>.text{
 		display: flex;
 		gap: 1em;
+	}
+	.reorderButtons {
+		display: flex;
+		flex-direction: column;
+		margin-left: 10px;
+	}
+	.reorderButtons button {
+		padding: 2px 5px;
+		font-size: 12px;
+		margin: 2px 0;
+	}
+	.grouped-item {
+		display: flex;
+		align-items: center;
 	}
 </style>
 
