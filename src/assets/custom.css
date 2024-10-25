@@ -139,6 +139,12 @@ select {
 
 Label.expandList{
 	display: inline-flex;
+	float: inline-end;
+	gap: 0.5em;
+
+	input[type="checkbox"]{
+		zoom: 1.5;
+	}
 }
 .inlineFields{
 	display: flex;

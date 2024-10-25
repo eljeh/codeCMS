@@ -10,39 +10,19 @@
 </template>
 
 <script>
-//import { marked } from 'marked';
-
-const hero = {
-  codeBlock: `/* Parallax JS */
-if($(window).width() >= 1025){
-	$(window).on('load', function() {
-	$(".loader").delay(7000).hide();
-	$(".hero-header").delay(2000).fadeIn(1)
-})
-
-let parallax = document.querySelectorAll(".parallax")
-let speed = -0.25
-window.onscroll = function() {
-	[].slice.call(parallax).forEach(function(el, i) {
-		const windowYOffset = window.pageYOffset,
-			elBackgrounPos = "50% " +  (windowYOffset * speed + i * 200) + "px"
-		el.style.backgroundPosition = elBackgrounPos
-	})
-}
-	}`,
-};
+import data from './data.json';
 
 export default {
   data() {
     return {
-      codeBlock: hero.codeBlock.trim(),
+      codeBlock: data.js.codeBlock.trim(),
     };
   },
   methods: {
     updateCode() {
 
       // Properly construct the codeBlock with reactive data properties
-      this.codeBlock = hero.codeBlock
+      this.codeBlock = data.js.codeBlock
     },
     selectAll() {
       const codeElement = this.$refs.codeBlock;

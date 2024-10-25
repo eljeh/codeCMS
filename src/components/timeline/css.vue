@@ -1,71 +1,41 @@
 <template>
 	<div>
 		<form @submit.prevent="updateCode">
-			<label>
+
+			<!-- <label>
 				Title:
 				<input type="text" v-model="title" placeholder="Title" style="width: 100%;" />
 			</label>
 			<label>
 				Description:
 				<textarea v-model="description" placeholder="Description" style="width: 100%; height: 10ch"></textarea>
-			</label>
+			</label> -->
+
+			<div class="codeControls">
+				<button @click="copyToClipboard">Copy</button>
+			</div>
 		</form>
-		<div class="codeControls">
-			<button @click="copyToClipboard">Copy</button>
-		</div>
 		<pre><code ref="codeBlock">{{ codeBlock }}</code></pre>
 	</div>
 </template>
 
 <script>
-//import { marked } from 'marked';
+import data from './data.json';
 
-const data = {
-	title: 'title',
-	description: 'description',
-	codeBlock: `<style>
-.timeline-bg {
-  background: linear-gradient(to right, #191919, #474747);
-
-}
-.mb-n1 {
-  margin-bottom: -1px;
-}
-.timeline {
-  border: 1px solid rgba(255, 250, 250, .3);
-  border-radius: 10px;
-  overflow: hidden;
-}
-.goal {
-  padding: 0 2em;
-  border-bottom: 1px solid rgba(255, 250, 250, .3);
-  background-color: #2b2b2b;
-}
-.timeline .shaded-bg {
-    background: #191919;
-}
-.status {
-  padding: 0 2em;
-  background-color: #0D64EF;
-  border-bottom: 1px solid rgba(255, 250, 250, .3);
-}
-
-</style>`,
-};
 
 export default {
 	data() {
 		return {
-			title: data.title,
-			description: data.description,
-			codeBlock: data.codeBlock,
+			title: data.css.title,
+			description: data.css.description,
+			codeBlock: data.css.codeBlock,
 		};
 	},
 	methods: {
 		updateCode() {
 
 			// Properly construct the codeBlock with reactive data properties
-			this.codeBlock = data.codeBlock
+			this.codeBlock = data.css.codeBlock
 				.replace('{{title}}', this.title)
 				.replace('{{description}}', this.description)
 		},

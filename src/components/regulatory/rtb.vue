@@ -11,7 +11,7 @@
         		<strong>Contact Info:</strong>
 
         		<label for="expandButtons" class="expandList">
-          			- Collapse List
+          			Collapse List
           			<input name="expandButtons" class="expand" type="checkbox" checked/>
         		</label>
 
@@ -93,33 +93,14 @@
 </template>
 
 <script>
-//import { marked } from 'marked';
-
-const data = {
-	title: 'Canada Energy Regulator (CER)',
-	linetypes: [
-			{ style: 'textStyle', text: 'Corporate Headquarters' },
-			{ style: 'textStyle', text: '200 Bay Street<br>Toronto, Ontario<br>M5J 2J2' },
-			{ style: 'phoneStyle', phonenumber: '1-800-555-1234', phonetype: 'telLocal' },
-			{ style: 'phoneStyle', phonenumber: '1-888-999-8765', phonetype: 'telTollFree' },
-			{ style: 'emailStyle', email: 'info@example.com', displayname: 'Customer Support' },
-			],
-	codeBlock: `<div class="regulatory-info">
-<div class="ferc-table">
-	<div class="ferc-header">
-		<h5 class=" white-heading">{{title}}</h5>
-	</div>
-			{{linetypes}}
-	</div>
-</div>`,
-};
+import data from './data.json';
 
 export default {
 	data() {
 		return {
-			title: data.title,
-			linetypes: data.linetypes,
-			codeBlock: data.codeBlock,
+			title: data.rtb.title,
+			linetypes: data.rtb.linetypes,
+			codeBlock: data.rtb.codeBlock,
 		};
 	},
 	methods: {
@@ -133,7 +114,7 @@ export default {
 					.join('\n        ');
 
 			// Properly construct the codeBlock with reactive data properties
-			this.codeBlock = data.codeBlock
+			this.codeBlock = data.rtb.codeBlock
 				.replace('{{title}}', this.title)
 				.replace('{{linetypes}}', linetypeHtml);
 		},

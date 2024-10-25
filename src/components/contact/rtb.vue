@@ -18,7 +18,7 @@
         		<strong>Contact Info:</strong>
 
         		<label for="expandButtons" class="expandList">
-          			- Collapse List
+          			Collapse List
           			<input name="expandButtons" class="expand" type="checkbox" checked/>
         		</label>
 
@@ -102,113 +102,96 @@
 </template>
 
 <script>
-	const data = {
-		title: 'Contact Information',
-		description: 'Safety is our top priority for all our pipelines and facilities. For emergency situations, please refer to our <a href="/emergency-contacts" target="_blank" rel="noopener">Emergency Contact page</a> for a comprehensive list of emergency numbers.',
-		linetypes: [
-			{ style: 'textStyle', text: 'Corporate Headquarters' },
-			{ style: 'textStyle', text: '200 Bay Street<br>Toronto, Ontario<br>M5J 2J2' },
-			{ style: 'phoneStyle', phonenumber: '1-800-555-1234', phonetype: 'telLocal' },
-			{ style: 'phoneStyle', phonenumber: '1-888-999-8765', phonetype: 'telTollFree' },
-			{ style: 'emailStyle', email: 'info@example.com', displayname: 'Customer Support' },
-		],
-		codeBlock: `<div class="ferc-table mb-2">
-			<div class="ferc-header">
-				<h5 class="white-heading">{{title}}</h5>
-			</div>
-			<div class="table-cell">{{description}}</div>
-			{{linetypes}}
-		</div>`,
-	};
+import data from './data.json';
 
-	export default {
-		data() {
-			return {
-				title: data.title,
-				description: data.description,
-				linetypes: data.linetypes,
-				codeBlock: data.codeBlock,
-			};
-		},
-		methods: {
-			// Update codeBlock dynamically based on form inputs
-			updateCode() {
-				const linetypeHtml = this.linetypes
-					.map((type) => 
-						(type.style === 'phoneStyle') ? `<div class="table-cell"><span class="me-1">${type.phonetype}</span> <a class="telephone" href="tel:${type.phonenumber}" target="_blank" rel="noopener">${type.phonenumber}</a></div>` :
-						(type.style === 'emailStyle') ? `<div class="table-cell"><a href="mailto:${type.email}" target="_blank" rel="noopener">${type.displayname}</a></div>` : 
-						(type.style === 'textStyle') ? `<div class="table-cell">${type.text}</div>` : ''
-					)
-					.join('\n        ');
-					
-				// Properly construct the codeBlock with reactive data properties
-				this.codeBlock = data.codeBlock
-					.replace('{{title}}', this.title)
-					.replace('{{description}}', this.description)
-					.replace('{{linetypes}}', linetypeHtml);
-			},
-
-			// Add a new empty line type entry
-			addEntry() {
-				this.linetypes.push({style: 'textStyle'});
-			},
-
-			// Remove the last line type entry
-			removeEntry() {
-				this.linetypes.pop();
-			},
-
-			// Select the entire code block for copying
-			selectAll() {
-				const codeElement = this.$refs.codeBlock;
-				const range = document.createRange();
-				range.selectNodeContents(codeElement);
-				const selection = window.getSelection();
-				selection.removeAllRanges();
-				selection.addRange(range);
-			},
-
-			// Copy the code to clipboard
-			copyToClipboard() {
-				this.selectAll();
-				document.execCommand('copy');
-				alert('Code copied to clipboard!');
-			},
-			moveItemUp(index) {
-			if (index > 0) {
-				const item = this.linetypes.splice(index, 1)[0];
-				this.linetypes.splice(index - 1, 0, item);
-			}
-		},
-		moveItemDown(index) {
-			if (index < this.linetypes.length - 1) {
-				const item = this.linetypes.splice(index, 1)[0];
-				this.linetypes.splice(index + 1, 0, item);
-			}
-		},
+export default {
+	data() {
+		return {
+			title: data.rtb.title,
+			description: data.rtb.description,
+			linetypes: data.rtb.linetypes,
+			codeBlock: data.rtb.codeBlock,
+		};
+	},
+	methods: {
+		// Update codeBlock dynamically based on form inputs
+		updateCode() {
+			const linetypeHtml = this.linetypes
+				.map((type) => 
+					(type.style === 'phoneStyle') ? `<div class="table-cell"><span class="me-1">${type.phonetype}</span> <a class="telephone" href="tel:${type.phonenumber}" target="_blank" rel="noopener">${type.phonenumber}</a></div>` :
+					(type.style === 'emailStyle') ? `<div class="table-cell"><a href="mailto:${type.email}" target="_blank" rel="noopener">${type.displayname}</a></div>` : 
+					(type.style === 'textStyle') ? `<div class="table-cell">${type.text}</div>` : ''
+				)
+				.join('\n        ');
+				
+			// Properly construct the codeBlock with reactive data properties
+			this.codeBlock = data.rtb.codeBlock
+				.replace('{{title}}', this.title)
+				.replace('{{description}}', this.description)
+				.replace('{{linetypes}}', linetypeHtml);
 		},
 
-		// Watch for changes to form inputs and update the codeBlock dynamically
-		watch: {
-			title() {
-				this.updateCode();
-			},
-			description() {
-				this.updateCode(); 
-			},
-			linetypes: {
-				handler() {
-					this.updateCode();
-				},
-				deep: true,
-			},
+		// Add a new empty line type entry
+		addEntry() {
+			this.linetypes.push({style: 'textStyle'});
 		},
 
-		// Initialize the codeBlock when component is mounted
-		mounted() {
+		// Remove the last line type entry
+		removeEntry() {
+			this.linetypes.pop();
+		},
+
+		// Select the entire code block for copying
+		selectAll() {
+			const codeElement = this.$refs.codeBlock;
+			const range = document.createRange();
+			range.selectNodeContents(codeElement);
+			const selection = window.getSelection();
+			selection.removeAllRanges();
+			selection.addRange(range);
+		},
+
+		// Copy the code to clipboard
+		copyToClipboard() {
+			this.selectAll();
+			document.execCommand('copy');
+			alert('Code copied to clipboard!');
+		},
+		moveItemUp(index) {
+		if (index > 0) {
+			const item = this.linetypes.splice(index, 1)[0];
+			this.linetypes.splice(index - 1, 0, item);
+		}
+	},
+	moveItemDown(index) {
+		if (index < this.linetypes.length - 1) {
+			const item = this.linetypes.splice(index, 1)[0];
+			this.linetypes.splice(index + 1, 0, item);
+		}
+	},
+	},
+
+	// Watch for changes to form inputs and update the codeBlock dynamically
+	watch: {
+		title() {
 			this.updateCode();
 		},
-	};
+		description() {
+			this.updateCode(); 
+		},
+		linetypes: {
+			handler() {
+				this.updateCode();
+			},
+			deep: true,
+		},
+	},
+
+	// Initialize the codeBlock when component is mounted
+	mounted() {
+		this.updateCode();
+	},
+};
 </script>
 
 <style>

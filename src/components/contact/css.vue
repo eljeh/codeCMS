@@ -10,29 +10,19 @@
   </template>
   
   <script>
-  
-  const data = {
-    codeBlock: `<style>
-.contact-bg {
-background-image: url(tce-emblem-white.svg), linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: 70%;
-}
-</style>`,
-  };
+  import data from './data.json';
   
   export default {
     data() {
       return {
-        codeBlock: data.codeBlock,
+        codeBlock: data.css.codeBlock,
       };
     },
     methods: {
       updateCode() {
   
         // Properly construct the codeBlock with reactive data properties
-        this.codeBlock = data.codeBlock
+        this.codeBlock = data.css.codeBlock
       },
       selectAll() {
         const codeElement = this.$refs.codeBlock;

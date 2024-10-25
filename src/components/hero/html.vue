@@ -13,7 +13,7 @@
       <div class="grouped-itemList navButtons">
         <strong>Navigation Buttons</strong>
         <label for="expandButtons" class="expandList">
-            - Collapse List
+            Collapse List
             <input name="expandButtons" class="expand" type="checkbox" checked/>
         </label>
 
@@ -65,46 +65,15 @@
 </template>
 
 <script>
-//import { marked } from 'marked';
-
-const hero = {
-  title: 'title',
-  description: 'description',
-  links: [
-    { label: 'Link 1', url: '#', style: 'lime-nav-item', external: true },
-    { label: 'Link 2', url: '#', style: 'blue-nav-item', external: false },
-    { label: 'Link 3', url: '#', style: 'blue-nav-item', external: false },
-    { label: 'Link 4', url: '#', style: 'blue-nav-item', external: true },
-  ],
-  codeBlock: `<section class="hero-header parallax" style="background-position: 50% 0px;">
-  <div class="hero-intro">
-    <div class="container">
-      <div class="row justify-content-between">
-        <div class="col-lg-12 px-0 mb-1 mb-lg-0">
-          <h1>{{title}}</h1>
-        </div>
-      </div>
-    </div>
-    <hr class="blue-hr">
-    <div class="overview">
-      <div class="overview-text">
-        {{description}}
-      </div>
-      <div class="blue-nav">
-        {{links}}
-      </div>
-    </div>
-  </div>
-</section>`,
-};
+import data from './data.json';
 
 export default {
   data() {
     return {
-      title: hero.title,
-      description: hero.description,
-      links: hero.links,
-      codeBlock: hero.codeBlock,
+      title: data.html.title,
+      description: data.html.description,
+      links: data.html.links,
+      codeBlock: data.html.codeBlock,
     };
   },
   methods: {
@@ -115,7 +84,7 @@ export default {
         .join('\n        ');
 
       // Properly construct the codeBlock with reactive data properties
-      this.codeBlock = hero.codeBlock
+      this.codeBlock = data.html.codeBlock
         .replace('{{title}}', this.title)
         .replace('{{description}}', this.description)
         .replace('{{links}}', linksHtml);

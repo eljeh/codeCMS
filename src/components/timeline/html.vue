@@ -14,7 +14,7 @@
           <strong>Contact Info:</strong>
 
           <label for="expandButtons" class="expandList">
-              - Collapse List
+              Collapse List
               <input name="expandButtons" class="expand" type="checkbox" checked/>
           </label>
 
@@ -61,57 +61,15 @@
 </template>
 
 <script>
-
-
-const data = {
-	title: 'Project timeline',
-	footnote: 'NOTE: Dates are subject to change.',
-	lineitems: [
-  {
-    "goal": "Project kickoff meeting",
-    "status": "Q3 2025",
-    "shaded": true
-  },
-  {
-    "goal": "Expected submission of environmental impact assessment to the National Environmental Board (NEB)",
-    "status": "Q4 2025",
-    "shaded": false
-  },
-  {
-    "goal": "Planned filing of Section 301 permit application with the NEB",
-    "status": "Q1 2026",
-    "shaded": true
-  },
-  {
-    "goal": "Preliminary site preparation",
-    "status": "Q4 2026",
-    "shaded": false
-  },
-  {
-    "goal": "Anticipated commencement of main construction phase",
-    "status": "Q4 2027",
-    "shaded": true
-  },
-  {
-    "goal": "Projected operational launch date",
-    "status": "Q2 2028",
-    "shaded": false
-  }
-],
-	codeBlock: `<h2 id="time-line" class="mb-2">{{title}}</h2>
-	<div class="row timeline mx-0 mb-2">
-		{{lineitems}}
-	</div>
-<p class="small">{{footnote}}</p>`,
-};
+import data from './data.json';
 
 export default {
 	data() {
 		return {
-			title: data.title,
-			lineitems: data.lineitems, 
-			footnote: data.footnote, 
-			codeBlock: data.codeBlock,
+			title: data.html.title,
+			lineitems: data.html.lineitems, 
+			footnote: data.html.footnote, 
+			codeBlock: data.html.codeBlock,
 		};
 	},
 	methods: {
@@ -127,7 +85,7 @@ export default {
 
 
 			// Properly construct the codeBlock with reactive data properties
-			this.codeBlock = data.codeBlock
+			this.codeBlock = data.html.codeBlock
 				.replace('{{title}}', this.title)
         .replace('{{lineitems}}', lineitemsHtml)
         .replace('{{footnote}}', this.footnote);

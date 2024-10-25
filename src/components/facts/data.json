@@ -1,0 +1,21 @@
+{
+	"rtb": {
+		"card1Title": "Supports economic growth",
+		"card2Title": "Improves safety and efficiency of energy transport",
+		"card3Title": "Utilizes existing corridors to minimize environmental impact",
+		"links": [
+			{
+				"label": "Download the fact sheet",
+				"url": "/factsheet_oct2024.pdf",
+				"style": "blue-cta-button",
+				"external": true
+			}
+		],
+		"codeBlock": "<h2 id=\"facts\" class=\"text-center mb-3\">Key Project Benefits</h2>\n<div class=\"row gap-lg-3 gap-2 gap-lg-2 gap-md-3 px-lg-4 justify-content-md-center mb-4 facts-cards\">\n\t<div class=\"col-md-4 facts-card-blue text-center\">\n\t\t<img src=\"/graphic-elements/tce-white-arrows-up.svg\" alt=\"Up arrow\">\n\t\t<h5 class=\"text-light\">{{card1Title}}</h5>\n\t</div>\n\t<div class=\"col-md-4 facts-card-black text-center\">\n\t\t<img src=\"/graphic-elements/tce-white-arrows-up.svg\" alt=\"Up arrow\">\n\t\t<h5 class=\"text-light\">{{card2Title}}</h5>\n\t</div>\n\t<div class=\"col-md-4 facts-card-blue text-center\">\n\t\t<img src=\"/graphic-elements/tce-white-arrows-up.svg\" alt=\"Up arrow\">\n\t\t<h5 class=\"text-light\">{{card3Title}}</h5>\n\t</div>\n</div>\n<p class=\"text-center\">{{links}}</p>"
+	},
+	"css": {
+		"title": "title",
+		"description": "description",
+		"codeBlock": "<style>\n.facts-wrapper {\n\tbackground-image: url(background-topography-white-1.jpg);\n\tbackground-size: cover;\n}\n.facts-cards img {\n\twidth: 15%;\n\tmargin-bottom: 1.4em;\n}\n.facts-card-blue {\n\talign-items: center;\n\tbackground: linear-gradient(to right, #0D64EF, #3D83F2);\n\tborder-radius: 10px;\n\tpadding: 2.2em 1.6em 3em;\n}\n.facts-card-black {\n\talign-items: center;\n\tbackground: linear-gradient(to right, #191919, #474747);\n\tborder-radius: 10px;\n\tpadding: 2.2em 1.6em 3em;\n}\n.facts-card-black, .facts-card-blue {\n\tbox-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;\n}\n.facts-card-blue h5, .facts-card-black h5 {\n\tfont-size: 1.2rem;\n}\n@media (min-width: 991px) {\n\t.facts-card-blue h5, .facts-card-black h5 {\n\t\tfont-size: 1.1rem;\n\t}\n\t.facts-cards img {\n\t\twidth: 17%;\n\t\tmargin-bottom: 2em;\n\t}\n}\n</style>"
+	}
+}

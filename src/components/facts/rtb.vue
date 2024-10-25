@@ -48,40 +48,15 @@
 
 <script>
 
-const data = {
-	card1Title: 'Supports economic growth',
-	card2Title: 'Improves safety and efficiency of energy transport', 
-	card3Title: 'Utilizes existing corridors to minimize environmental impact',
-	links: [
-		{ label: 'Download the fact sheet', url: '/factsheet_oct2024.pdf', style: 'blue-cta-button', external: true },
-	],
-	codeBlock: `<h2 id="facts" class="text-center mb-3">Key Project Benefits</h2>
-<div class="row gap-lg-3 gap-2 gap-lg-2 gap-md-3 px-lg-4 justify-content-md-center mb-4 facts-cards">
-	<div class="col-md-4 facts-card-blue text-center">
-		<img src="/graphic-elements/tce-white-arrows-up.svg" alt="Up arrow">
-		<h5 class="text-light">{{card1Title}}</h5>
-	</div>
-	<div class="col-md-4 facts-card-black text-center">
-		<img src="/graphic-elements/tce-white-arrows-up.svg" alt="Up arrow">
-		<h5 class="text-light">{{card2Title}}</h5>
-	</div>
-	<div class="col-md-4 facts-card-blue text-center">
-		<img src="/graphic-elements/tce-white-arrows-up.svg" alt="Up arrow">
-		<h5 class="text-light">{{card3Title}}</h5>
-	</div>
-</div>
-<p class="text-center">{{links}}</p>
-`,
-};
-
+import data from './data.json';
 export default {
 	data() {
 		return {
-			card1Title: data.card1Title,
-			card2Title: data.card2Title, 
-			card3Title: data.card3Title, 
-			links: data.links,
-			codeBlock: data.codeBlock,
+			card1Title: data.rtb.card1Title,
+			card2Title: data.rtb.card2Title, 
+			card3Title: data.rtb.card3Title, 
+			links: data.rtb.links,
+			codeBlock: data.rtb.codeBlock,
 		};
 	},
 	methods: {
@@ -91,7 +66,7 @@ export default {
 			.map((link) => `<a class="${link.style}" href="${link.url}"${link.external ? ' target="_blank"' : ''}>${link.label}</a>`)
 			.join('\n        ');
 
-			this.codeBlock = data.codeBlock
+			this.codeBlock = data.rtb.codeBlock
 				.replace('{{card1Title}}', this.card1Title)
 				.replace('{{card2Title}}', this.card2Title)
 				.replace('{{card3Title}}', this.card3Title)

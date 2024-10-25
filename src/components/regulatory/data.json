@@ -1,0 +1,18 @@
+{
+  "rtb": {
+    "title": "Canada Energy Regulator (CER)",
+    "linetypes": [
+      { "style": "textStyle", "text": "Corporate Headquarters" },
+      { "style": "textStyle", "text": "200 Bay Street<br>Toronto, Ontario<br>M5J 2J2" },
+      { "style": "phoneStyle", "phonenumber": "1-800-555-1234", "phonetype": "telLocal" },
+      { "style": "phoneStyle", "phonenumber": "1-888-999-8765", "phonetype": "telTollFree" },
+      { "style": "emailStyle", "email": "info@example.com", "displayname": "Customer Support" }
+    ],
+    "codeBlock": "<div class=\"regulatory-info\">\n<div class=\"ferc-table\">\n\t<div class=\"ferc-header\">\n\t\t<h5 class=\" white-heading\">{{title}}</h5>\n\t</div>\n\t\t\t{{linetypes}}\n\t</div>\n</div>"
+  },
+  "css": {
+    "title": "title",
+    "description": "description",
+    "codeBlock": "<style>\n.regulatory-bg {\n    background: linear-gradient(to right, #191919, #474747);\n    background-size: cover;\n}\n.ferc-header {\n    padding: 1.4em 2em 1.1em;\n    background-color: #0D64EF;\n    border-top-right-radius: 10px;\n    border-top-left-radius: 10px;\n}\n.table-cell {\n    background-color: #FAFAFA;\n    padding: 1.4em 2em 1.1em;\n    margin-bottom: 1px;\n}\n.table-cell:last-child {\n    border-bottom-right-radius: 10px;\n    border-bottom-left-radius: 10px;\n}\n\n.ferc-table .table-cell, .ferc-table .table-cell .telephone, .ferc-table .table-cell .fax ,.ferc-table .table-cell .email {\ncolor: #191919 !important;\n}\n\n@media (max-width: 991px) {\n.table-cell span {\n    display: block;\n    margin-bottom: 10px;\n}\n.ferc-header, .table-cell {\n        padding: 1.4em 1em 1.1em;\n }\n}\n.RichTextBlock p {\ntext-wrap: pretty;\n}\n.dark-theme .telephone:before {\n   content: url(icn_phone_charcoal50.svg) !important;\n}\n.dark-theme .fax:before {\ncontent: url(icn_fax_charcoal50.svg);\n}\n.dark-theme .email:before {\n    content: url(icn_email_charcoal50.svg) !important;\n}\n</style>"
+  }
+}

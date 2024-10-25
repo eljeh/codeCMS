@@ -60,7 +60,7 @@
 <script>
 //import { marked } from 'marked';
 
-const hero = {
+const data = {
   title: 'title',
   description: 'description',
   links: [
@@ -94,10 +94,10 @@ const hero = {
 export default {
   data() {
     return {
-      title: hero.title,
-      description: hero.description,
-      links: hero.links,
-      codeBlock: hero.codeBlock.trim(),
+      title: data.title,
+      description: data.description,
+      links: data.links,
+      codeBlock: data.codeBlock.trim(),
     };
   },
   methods: {
@@ -108,7 +108,7 @@ export default {
         .join('\n        ');
 
       // Properly construct the codeBlock with reactive data properties
-      this.codeBlock = hero.codeBlock
+      this.codeBlock = data.codeBlock
         .replace('{{title}}', this.title)
         .replace('{{description}}', this.description)
         .replace('{{links}}', linksHtml);
