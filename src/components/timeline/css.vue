@@ -69,7 +69,7 @@ export default {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'data.json';
+      a.download = 'timeline-css.json';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
