@@ -32,8 +32,10 @@
       v-model="localLink.external"
     />
 
-    <!-- Remove Button -->
-    <button @click.prevent="removeThisLink">Remove</button>
+    <div class="reorderButtons">
+      <button @click.prevent="moveItemUp(index)" :disabled="index === 0">↑</button>
+      <button @click.prevent="moveItemDown(index)" :disabled="index === linetypes.length - 1">↓</button>
+    </div>
   </div>
 </template>
 
@@ -86,6 +88,16 @@ export default {
   methods: {
     removeThisLink() {
       this.$emit('remove-link');
+    },
+    moveItemUp(index) {
+      if (index > 0) {
+        this.$emit('move-item-up', index);
+      }
+    },
+    moveItemDown(index) {
+      if (index < this.linetypes.length - 1) {
+        this.$emit('move-item-down', index);
+      }
     },
   },
 };

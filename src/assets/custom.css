@@ -84,7 +84,6 @@ label[for="expandButtons"]:has(.expand:checked) ~ .itemList > .grouped-item:not(
 	
 }
 
-
 .navButton{
 	display: flex;
 	gap: 1rem;
@@ -149,4 +148,25 @@ Label.expandList{
 .inlineFields{
 	display: flex;
 	gap: 1em;
+}
+
+.wrapper{
+	position: relative;
+}
+.controls {
+	position: absolute;
+	right: 0;
+	top: -3.5em;
+	button{
+		height: auto;
+		line-height: 1.2;
+		margin-inline: 1em;
+	}
+	input{
+		border: 1px solid grey;
+		border-radius: .25em;
+		padding: 0.25em;
+		font-size: 0.85em;
+		margin-bottom: 0.75em;
+	}
 }

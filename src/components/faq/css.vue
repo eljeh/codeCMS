@@ -1,5 +1,9 @@
 <template>
-	<div>
+	<div class="wrapper">
+		<div class="controls">
+			<input type="file" @change="handleFileUpload" accept=".json">
+			<button @click="downloadData">Download</button>
+		</div>
 		<form @submit.prevent="updateCode">
 			<!-- <label>
 				Title:
@@ -50,6 +54,45 @@ export default {
 			document.execCommand('copy');
 			alert('Code copied to clipboard!');
 		},
+		downloadData() {
+      const jsonData = JSON.stringify({
+        css: {
+          title: this.title,
+          description: this.description,
+          codeBlock: this.codeBlock
+        }
+      }, null, 2);
+
+      const blob = new Blob([jsonData], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'data.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    },
+		handleFileUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try {
+            const uploadedData = JSON.parse(e.target.result);
+            this.title = uploadedData.css.title;
+            this.description = uploadedData.css.description;
+            this.codeBlock = uploadedData.css.codeBlock;
+            this.useUploadedData = true;
+            this.updateCode();
+          } catch (error) {
+            console.error('Error parsing JSON file:', error);
+            alert('Error parsing JSON file. Please make sure it\'s a valid JSON file.');
+          }
+        };
+        reader.readAsText(file);
+      }
+    },
 	},
 	watch: {
 		title() {

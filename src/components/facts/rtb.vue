@@ -1,5 +1,9 @@
 <template>
-	<div>
+	<div class="wrapper">
+		<div class="controls">
+			<input type="file" @change="handleFileUpload" accept=".json">
+			<button @click="downloadData">Download</button>
+		</div>
 		<form @submit.prevent="updateCode">
 			<label>
 				Card1 Title:
@@ -85,6 +89,49 @@ export default {
 			document.execCommand('copy');
 			alert('Code copied to clipboard!');
 		},
+		downloadData() {
+      const jsonData = JSON.stringify({
+        rtb: {
+          card1Title: this.card1Title,
+          card2Title: this.card2Title,
+          card3Title: this.card3Title,
+          links: this.links,
+          codeBlock: this.codeBlock
+        }
+      }, null, 2);
+
+      const blob = new Blob([jsonData], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'data.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    },
+		handleFileUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try {
+            const uploadedData = JSON.parse(e.target.result);
+            this.card1Title = uploadedData.rtb.card1Title;
+            this.card2Title = uploadedData.rtb.card2Title;
+            this.card3Title = uploadedData.rtb.card3Title; 
+            this.links = uploadedData.rtb.links; 
+            this.codeBlock = uploadedData.rtb.codeBlock;
+            this.useUploadedData = true;
+            this.updateCode();
+          } catch (error) {
+            console.error('Error parsing JSON file:', error);
+            alert('Error parsing JSON file. Please make sure it\'s a valid JSON file.');
+          }
+        };
+        reader.readAsText(file);
+      }
+    },
 	},
 	watch: {
 		card1Title() {

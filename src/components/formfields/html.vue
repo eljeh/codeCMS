@@ -48,8 +48,6 @@
         </div>
       </div>
 
-      <!-- Submit Button (Optional) -->
-      <button type="submit">Update Code</button>
     </form>
 
     <!-- Copy to Clipboard Button -->

@@ -13,6 +13,7 @@ export default defineConfig({
                 label: 'CodeBlocks',
                 items: [
                     // Each item here is one entry in the navigation menu.
+                    //{ label: 'formfield', slug: 'blocks/formfields' },
                     { label: 'Hero', slug: 'blocks/hero' },
                     { label: 'Contact', slug: 'blocks/contact' },
                     { label: 'Facts', slug: 'blocks/facts' },

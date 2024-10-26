@@ -1,6 +1,12 @@
 <template>
-	<div>
+	<div class="wrapper">
+		<div class="controls">
+			<input type="file" @change="handleFileUpload" accept=".json">
+			<button @click="downloadData">Download</button>
+		</div>
+
 		<form @submit.prevent="updateCode">
+			
 			<label>
 				Title:
 				<input type="text" v-model="title" placeholder="Title" style="width: 100%;" />
@@ -70,6 +76,7 @@ export default {
 			lineitems: data.html.lineitems, 
 			footnote: data.html.footnote, 
 			codeBlock: data.html.codeBlock,
+			useUploadedData: false,
 		};
 	},
 	methods: {
@@ -77,10 +84,10 @@ export default {
       const lineitemsHtml = this.lineitems
 					.map((lineitem, index) => `<div class="col-md-9 goal shaded-bg">
 			<p>${lineitem.goal}</p>
-		</div>
-		<div class="col-md-3 status">
-			<p class="text-uppercase">${lineitem.status}</p>
-		</div>`)
+			</div>
+			<div class="col-md-3 status">
+				<p class="text-uppercase">${lineitem.status}</p>
+			</div>`)
 					.join('\n        ');
 
 
@@ -106,10 +113,15 @@ export default {
 			selection.addRange(range);
 		},
 		copyToClipboard() {
-			this.selectAll();
-			document.execCommand('copy');
-			alert('Code copied to clipboard!');
-		},
+			navigator.clipboard.writeText(this.codeBlock)
+			.then(() => {
+				alert('CodeBlock copied to clipboard!');
+    })
+    .catch(err => {
+      console.error('Failed to copy text: ', err);
+      alert('Failed to copy code to clipboard. Please try again.');
+    });
+},
 		moveItemUp(index) {
       if (index > 0) {
         const item = this.lineitems.splice(index, 1)[0];
@@ -120,6 +132,47 @@ export default {
       if (index < this.lineitems.length - 1) {
         const item = this.lineitems.splice(index, 1)[0];
         this.lineitems.splice(index + 1, 0, item);
+      }
+    },
+		downloadData() {
+      const jsonData = JSON.stringify({
+        html: {
+          title: this.title,
+          lineitems: this.lineitems,
+          footnote: this.footnote,
+          codeBlock: this.codeBlock
+        }
+      }, null, 2);
+
+      const blob = new Blob([jsonData], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'data.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    },
+		handleFileUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try {
+            const uploadedData = JSON.parse(e.target.result);
+            this.title = uploadedData.html.title;
+            this.lineitems = uploadedData.html.lineitems;
+            this.footnote = uploadedData.html.footnote;
+            this.codeBlock = uploadedData.html.codeBlock;
+            this.useUploadedData = true;
+            this.updateCode();
+          } catch (error) {
+            console.error('Error parsing JSON file:', error);
+            alert('Error parsing JSON file. Please make sure it\'s a valid JSON file.');
+          }
+        };
+        reader.readAsText(file);
       }
     },
 	},
@@ -138,6 +191,12 @@ export default {
 			},
 	},
 	mounted() {
+		if (!this.useUploadedData) {
+      this.title = data.html.title;
+      this.lineitems = data.html.lineitems;
+      this.footnote = data.html.footnote;
+      this.codeBlock = data.html.codeBlock;
+    }
 		this.updateCode();
 	},
 };
@@ -176,4 +235,31 @@ export default {
 		display: flex;
 		align-items: center;
 	}
+	/* .codeControls {
+		display: flex;
+		gap: 10px;
+	} */
+	.wrapper{
+		position: relative;
+	}
+	.controls {
+    position: absolute;
+    right: 0;
+    top: -3.5em;
+		button{
+			height: auto;
+			line-height: 1.2;
+			margin-inline: 1em;
+		}
+		input{
+			border: 1px solid grey;
+			border-radius: .25em;
+			padding: 0.25em;
+			font-size: 0.85em;
+			margin-bottom: 0.75em;
+		}
+	}
+
+
+
 </style>
