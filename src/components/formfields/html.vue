@@ -42,10 +42,10 @@
         </div>
 
         <!-- Controls to Add/Remove Links -->
-        <div class="navfieldControls">
+        <!-- <div class="navfieldControls">
           <button @click.prevent="addLink">+ New Link</button>
           <button @click.prevent="removeLastLink">- Last Link</button>
-        </div>
+        </div> -->
       </div>
 
     </form>
