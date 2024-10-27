@@ -50,6 +50,11 @@
             </label>
             </div>
 
+            <div class="reorderButtons">
+							<button @click.prevent="moveItemUp(index)" :disabled="index === 0">↑</button>
+							<button @click.prevent="moveItemDown(index)" :disabled="index === links.length - 1">↓</button>
+						</div>
+
           </div>
         </div>
 
@@ -112,6 +117,18 @@ export default {
       document.execCommand('copy');
       alert('Code copied to clipboard!');
     },
+    moveItemUp(index) {
+			if (index > 0) {
+				const link = this.links.splice(index, 1)[0];
+				this.links.splice(index - 1, 0, link);
+			}
+		},
+		moveItemDown(index) {
+			if (index < this.links.length - 1) {
+				const link = this.links.splice(index, 1)[0];
+				this.links.splice(index + 1, 0, link);
+			}
+		},
     downloadData() {
       const jsonData = JSON.stringify({
         html: {

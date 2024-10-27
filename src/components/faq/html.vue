@@ -195,37 +195,3 @@ export default {
 </script>
 
 
-<style>
-	.contactLine label{
-		display: flex;
-	}
-	.inputLine{
-    flex: 1;
-    display: flex;
-    gap: 1em;
-    flex-direction: column;
-	}
-	.inputLine label{
-		flex: 1;
-    gap: 1em;
-		text-wrap: nowrap;
-	}
-	.inputLine>div{
-		gap: 1em;
-		text-wrap: nowrap;
-	}
-  .reorderButtons {
-		display: flex;
-		flex-direction: column;
-		margin-left: 10px;
-	}
-	.reorderButtons button {
-		padding: 2px 5px;
-		font-size: 12px;
-		margin: 2px 0;
-	}
-	.grouped-item {
-		display: flex;
-		align-items: center;
-	}
-</style>

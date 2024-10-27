@@ -216,58 +216,6 @@ export default {
 </script>
 
 
-<style>
-	.contactLine label{
-		display: flex;
-	}
-	.optionStyle{
-		display: flex;
-	}
-	.optionStyle>select{
-		flex: 1;
-	}
-	.inputLine{
-		flex:1;
-	}
-	.inputLine label{
-		flex: 1;
-		text-wrap: nowrap;
-	}
-	.ph
-	.inputLine>div{
-		gap: 1em;
-		text-wrap: nowrap;
-	}
-	.phone,.address,.text{
-		display: none;
-	}
-	.phoneStyle>.phone{
-		display: flex;
-		gap: 1em;
-	}
-	.emailStyle>.address{
-		display: flex;
-		gap: 1em;
-	}
-	.textStyle>.text{
-		display: flex;
-		gap: 1em;
-	}
-	.reorderButtons {
-		display: flex;
-		flex-direction: column;
-		margin-left: 10px;
-	}
-	.reorderButtons button {
-		padding: 2px 5px;
-		font-size: 12px;
-		margin: 2px 0;
-	}
-	.grouped-item {
-		display: flex;
-		align-items: center;
-	}
-</style>
 
 
 
