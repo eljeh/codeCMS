@@ -156,7 +156,7 @@ export default {
         reader.onload = (e) => {
           try {
             const uploadedData = JSON.parse(e.target.result);
-            this.title = uploadedData.html.title;s
+            this.title = uploadedData.html.title;
             this.description = uploadedData.html.description;
             this.links = uploadedData.html.links;
             this.codeBlock = uploadedData.html.codeBlock;
